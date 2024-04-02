@@ -7,24 +7,22 @@ function getComputerChoice() {
 
 function playRound(playerChoice, computerChoice) {
     if ((playerChoice === "scissors") && (computerChoice === "paper")) {
-        return "Scissors beats paper!";
+        return "You Win! Scissors beats paper!";
     }
     else if ((playerChoice === "scissors") && (computerChoice === "rock")) {
-        return "Rock beats scissors!";
+        return "You Lose! Rock beats scissors!";
     } 
     else if ((playerChoice === "rock") && (computerChoice === "paper")) {
-        return "Paper beats rock!";
+        return "You Lose! Paper beats rock!";
     } 
     else if ((playerChoice === "rock") && (computerChoice === "scissors")) {
-        return "Rock beats scissors!";
+        return "You Win! Rock beats scissors!";
     } 
     else if ((playerChoice === "paper") && (computerChoice === "rock")) {
-        return "Paper beats rock!";
+        return "You Win! Paper beats rock!";
     } 
     else if ((playerChoice === "paper") && (computerChoice === "scissors")) {
-        return "Scissors beats paper!";
-    } else {
-        return "You both chose the same!";
+        return "You Lose! Scissors beats paper!";
     }
 }
 
@@ -37,6 +35,12 @@ function playGame() {
     while (round <= rounds) {
         let playerChoice = prompt("Enter you choice (Rock, Paper, or Scissors)");
         let computerChoice = getComputerChoice();
+
+        while (playerChoice === computerChoice) {
+            console.log("You both chose the same! Rerunning the game...");
+            playerChoice = prompt("You both chose the same... reenter you choice (Rock, Paper, or Scissors)");
+            computerChoice = getComputerChoice();
+        }
         
         if ((playerChoice === "scissors") && (computerChoice === "paper")) {
             playerScore += 1;
